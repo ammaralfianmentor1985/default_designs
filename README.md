@@ -10,6 +10,8 @@ Ready-made website designs that Claude can reuse. Each design comes with its own
 
 ## How to use `/villa-landing`
 
+The command comes from the folder `.claude/skills/villa-landing`. A new Claude Code session only has it if that folder is on the branch the session starts from, which is `main` unless you pick another branch.
+
 Start a Claude Code session on this repository, then type the command followed by what you know about the property. For example:
 
 ```
@@ -41,6 +43,16 @@ The more you tell it, the fewer brackets are left. Useful details:
 | `.claude/skills/villa-landing/DESIGN.md` | The design rules: colours, fonts, sections, phone and laptop rules, and photo rules. |
 | `.claude/skills/villa-landing/template.dc.html` | The page with [placeholders], ready for a Claude Design canvas. |
 | `.claude/skills/villa-landing/examples/annies-villa.dc.html` | The finished Annie's Villa page. Its photo links only work inside its own canvas. |
+
+## Using it on claude.ai
+
+To have the design in every chat, not just in this repository, upload it as a skill:
+
+1. Zip the `villa-landing` folder so the zip holds that folder itself, with `SKILL.md` inside it.
+2. On claude.ai, go to Customize › Skills, choose +, then Create skill › Upload a skill, and pick the zip.
+3. Code execution must be on: Settings › Capabilities › Code execution and file creation.
+
+In a chat, ask for it by name, for example "Use my villa-landing skill to build a website for …". Skills you turn on at claude.ai also load in Claude Code sessions.
 
 ## Using it in Claude Design
 

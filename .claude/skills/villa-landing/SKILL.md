@@ -1,6 +1,6 @@
 ---
 name: villa-landing
-description: Builds a one-page website for a villa, guesthouse, homestay or small resort in the Villa Landing default design (white pages, one deep green, Inter two-tone headlines, pill buttons, photo-led sections), as a Claude Design canvas or an HTML file, and checks it on phones, tablets and laptops. Use when the user types /villa-landing or asks for a villa or rental property website in this style.
+description: Builds a villa, guesthouse or homestay website in the green Villa Landing design, as a Claude Design canvas or HTML file. Use for /villa-landing or villa website requests.
 argument-hint: "[property name, place, rooms, where the photos are]"
 ---
 
@@ -9,6 +9,13 @@ argument-hint: "[property name, place, rooms, where the photos are]"
 Build a property's landing page from the template in this folder.
 
 The user's request: $ARGUMENTS
+
+Rules that always apply:
+
+- Follow `DESIGN.md` and keep the template's look.
+- Never invent facts. Anything unconfirmed stays in [brackets].
+- Use only real photos of the property.
+- Check the page at phone, tablet and laptop widths before reporting.
 
 Files in this folder:
 
