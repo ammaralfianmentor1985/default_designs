@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Annie’s Villa</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+section[id]{scroll-margin-top:84px}
+.pill{display:inline-flex;align-items:center;gap:12px;border-radius:999px;font-weight:500;transition:gap .25s ease,opacity .2s ease}
+.pill .disc{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;transition:transform .25s ease}
+.navlink{position:relative;padding:13px 0}
+.navlink:after{content:"";position:absolute;left:0;bottom:9px;height:1px;width:100%;background:#0E3221;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.zoom{overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;animation:heroFade 24s infinite}
+.hero-slide img{animation:kb 24s infinite ease-in-out}
+.hero-slide:nth-child(1),.hero-slide:nth-child(1) img{animation-delay:0s}
+.hero-slide:nth-child(2),.hero-slide:nth-child(2) img{animation-delay:6s}
+.hero-slide:nth-child(3),.hero-slide:nth-child(3) img{animation-delay:12s}
+.hero-slide:nth-child(4),.hero-slide:nth-child(4) img{animation-delay:18s}
+@keyframes heroFade{0%{opacity:0}4%{opacity:1}25%{opacity:1}29%{opacity:0}100%{opacity:0}}
+@keyframes kb{0%{transform:scale(1)}29%{transform:scale(1.09)}100%{transform:scale(1.09)}}
+.marquee{display:flex;width:max-content;animation:slide 40s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+  .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+.rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding-top:8px;margin-top:-8px;padding-bottom:20px;scrollbar-width:thin;scrollbar-color:#0E3221 #E4E4E2}
+.rail>*{scroll-snap-align:start;flex:0 0 min(420px,82vw)}
+.card{background:#fff;border:1px solid #E4E4E2;border-radius:20px;overflow:hidden;transition:transform .4s ease,border-color .3s ease}
+details>summary{list-style:none;cursor:pointer}
+details>summary::-webkit-details-marker{display:none}
+details .plus{transition:transform .3s ease}
+details[open] .plus{transform:rotate(45deg)}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.footlinks a{display:flex;align-items:center;min-height:44px}
+.short{display:none}
+/* hover effects only where there is a mouse, so they do not stick after a tap */
+@media (hover:hover) and (pointer:fine){
+  .pill:hover{gap:18px;opacity:.88}
+  .pill:hover .disc{transform:rotate(-45deg)}
+  .navlink:hover:after{transform:scaleX(1)}
+  .zoom img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .zoom:hover img{transform:scale(1.06)}
+  .card:hover{transform:translateY(-6px);border-color:#0E3221}
+}
+/* laptops and desktops: all four stays in one row, nothing cut off */
+@media (min-width:1200px){
+  .rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;padding-bottom:0}
+  .rail>.card{display:flex;flex-direction:column}
+  .rail>.card>div:last-child{flex:1}
+  .rail>.card .pill{margin-top:auto!important}
+  .rail-hint{display:none}
+}
+/* tablets and phones: menu bar keeps only the name and the booking button */
+@media (max-width:1000px){
+  .navlinks{display:none!important}
+}
+@media (max-width:760px){
+  .garden-grid{grid-template-columns:1fr!important}
+  .garden-grid>*{grid-column:auto!important}
+}
+@media (max-width:420px){
+  .long{display:none}
+  .short{display:inline}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-slide,.hero-slide img,.marquee,.float,.rise,.reveal{animation:none!important}
+  .hero-slide:first-child{opacity:1}
+}
+</style>
+</helmet>
+<div style="font-family:Inter,system-ui,sans-serif;color:#201F22;background:#FFFFFF;width:100%;box-sizing:border-box;overflow-x:clip">
+
+<!-- NAV -->
+<nav aria-label="Main" style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px clamp(16px,5.5vw,80px);box-sizing:border-box;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #E4E4E2">
+  <a href="#top" style="padding:10px 0;font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#0E3221">Annie’s Villa</a>
+  <div class="navlinks" style="display:flex;gap:30px;font-size:15px;color:#5C5C5C">
+    <a class="navlink" href="#stays">Stays</a><a class="navlink" href="#green">The garden</a><a class="navlink" href="#property">The property</a><a class="navlink" href="#lovina">Lovina</a><a class="navlink" href="#honest">Our promise</a>
+  </div>
+  <a class="pill" href="#contact" style="background:#0E3221;color:#FFFFFF;padding:8px 8px 8px 22px;font-size:14px;white-space:nowrap"><span class="long">Check availability</span><span class="short">Book</span> <span class="disc" style="width:30px;height:30px;background:#FFFFFF;color:#0E3221">→</span></a>
+</nav>
+
+<!-- HERO: crossfading, slow-zoom photographs. Replace with video when available. -->
+<section id="top" style="position:relative;height:min(92vh,900px);min-height:620px;background:#0E3221;overflow:hidden;color:#FFFFFF">
+  <div class="hero-slide"><img src="/_blob/0d5dd7a0cb22ceed5788e2714892b095" alt="Pool at dusk at Annie’s Villa, with the lit pavilion behind it"></div>
+  <div class="hero-slide"><img src="/_blob/65eea34f76e34cb6f165196d3113dc26" alt="Aerial view of the villa surrounded by palms and banana trees"></div>
+  <div class="hero-slide"><img src="/_blob/b86edcf5a7bc359f1c95efcfd8b6f0a1" alt="A room with a sofa, a double bed and a carved wooden door" style="object-position:58% 50%"></div>
+  <div class="hero-slide"><img src="/_blob/59d75361191fdb2e0d00e15f7eeb6bdd" alt="Green garden lawn beside the villa"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,19,.3) 0%,rgba(10,26,19,.24) 40%,rgba(10,26,19,.66) 100%)"></div>
+  <div style="position:absolute;left:clamp(16px,5.5vw,80px);right:clamp(16px,5.5vw,80px);bottom:72px">
+    <p class="rise" style="margin:0 0 22px;display:inline-block;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:7px 16px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">Lovina · Singaraja · North Bali</p>
+    <h1 class="rise" style="animation-delay:.15s;margin:0;font-size:clamp(46px,9vw,132px);line-height:.92;font-weight:500;letter-spacing:-0.045em;max-width:1150px">A quiet green villa <span style="color:#CFE0C6">by the pool, near the sea.</span></h1>
+    <div class="rise" style="animation-delay:.3s;display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;align-items:center">
+      <a class="pill" href="#stays" style="background:#FFFFFF;color:#0E3221;padding:10px 10px 10px 26px;font-size:16px">See the stays <span class="disc" style="width:34px;height:34px;background:#0E3221;color:#FFFFFF">→</span></a>
+      <span style="font-size:14px;color:#E4E4E2">Two rooms · a private bungalow · one garden pool</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section style="padding:clamp(72px,10vw,150px) clamp(16px,5.5vw,80px);max-width:1440px;margin:0 auto;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:48px">
+  <div class="reveal" style="display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+    <p style="margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(01) About</p>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:#5C5C5C;max-width:340px">A family-run villa in Lovina. It feels like a home in a garden: quiet, friendly and close to everything.</p>
+  </div>
+  <p class="reveal" style="margin:0;font-size:clamp(32px,4.4vw,62px);line-height:1.06;letter-spacing:-0.035em;font-weight:500">Annie’s Villa is made for slow days among palms and banana trees. <span style="color:#707070">The market, the mountains and the sea are all a short way from your door.</span></p>
+</section>
+
+<!-- MARQUEE -->
+<section style="background:#0E3221;color:#EAF1E4;padding:26px 0;overflow:hidden" aria-hidden="true">
+  <div class="marquee" style="font-size:clamp(28px,4vw,54px);letter-spacing:-0.03em;font-weight:500;white-space:nowrap">
+    <span style="padding-right:40px">Palm trees ✦ Banana trees ✦ A quiet pool ✦ Sea breeze ✦ Mountain air ✦ Friendly people ✦ Morning market ✦ </span>
+    <span style="padding-right:40px">Palm trees ✦ Banana trees ✦ A quiet pool ✦ Sea breeze ✦ Mountain air ✦ Friendly people ✦ Morning market ✦ </span>
+  </div>
+</section>
+
+<!-- STAYS -->
+<section id="stays" style="padding:clamp(72px,10vw,150px) 0 clamp(72px,10vw,150px) clamp(16px,5.5vw,80px);box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px;padding-right:clamp(16px,5.5vw,80px)">
+    <div>
+      <p style="margin:0 0 18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(02) Stays</p>
+      <h2 style="margin:0;font-size:clamp(40px,5.5vw,84px);line-height:.98;letter-spacing:-0.045em;font-weight:500">Choose your stay. <span class="rail-hint" style="color:#707070">Scroll across →</span></h2>
+    </div>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:#5C5C5C;max-width:420px">Rent a room, the bungalow or the whole property. Book online, or message the family directly.</p>
+  </div>
+  <div class="rail" style="padding-right:clamp(16px,5.5vw,80px)">
+    <article class="card">
+      <div class="zoom" style="aspect-ratio:4/3"><img src="/_blob/05e96291ab22fd697e76f1189bc062a4" alt="Large bedroom with a double bed and wardrobe" loading="lazy"></div>
+      <div style="padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#2F5D3F">Room · 7 × 8 m</p>
+        <h3 style="margin:0;font-size:28px;letter-spacing:-0.02em;font-weight:500">Large room</h3>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#5C5C5C">Direct access to the pool. Private bathroom.</p>
+        <p style="margin:0;font-size:16px">From [price] per night</p>
+        <a class="pill" href="#contact" style="margin-top:6px;align-self:flex-start;background:#0E3221;color:#FFFFFF;padding:8px 8px 8px 20px;font-size:14px">Book this room <span class="disc" style="width:28px;height:28px;background:#FFFFFF;color:#0E3221">→</span></a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="zoom" style="aspect-ratio:4/3"><img src="/_blob/23defc9da28d9f8fe884e222df45a426" alt="Double bed with orange cushions and towels" loading="lazy" style="object-position:50% 62%"></div>
+      <div style="padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#2F5D3F">Room · 5 × 6 m</p>
+        <h3 style="margin:0;font-size:28px;letter-spacing:-0.02em;font-weight:500">Small room</h3>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#5C5C5C">Quiet and comfortable. Private bathroom.</p>
+        <p style="margin:0;font-size:16px">From [price] per night</p>
+        <a class="pill" href="#contact" style="margin-top:6px;align-self:flex-start;background:#0E3221;color:#FFFFFF;padding:8px 8px 8px 20px;font-size:14px">Book this room <span class="disc" style="width:28px;height:28px;background:#FFFFFF;color:#0E3221">→</span></a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="zoom" style="aspect-ratio:4/3"><img src="/_blob/3244de0414484a64518e9479995ef208" alt="Covered veranda with sofa and armchairs" loading="lazy" style="object-position:50% 70%"></div>
+      <div style="padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#2F5D3F">Separate building</p>
+        <h3 style="margin:0;font-size:28px;letter-spacing:-0.02em;font-weight:500">The bungalow</h3>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#5C5C5C">Its own bedroom, living room and private kitchen.</p>
+        <p style="margin:0;font-size:16px">From [price] per night</p>
+        <a class="pill" href="#contact" style="margin-top:6px;align-self:flex-start;background:#0E3221;color:#FFFFFF;padding:8px 8px 8px 20px;font-size:14px">Book the bungalow <span class="disc" style="width:28px;height:28px;background:#FFFFFF;color:#0E3221">→</span></a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="zoom" style="aspect-ratio:4/3"><img src="/_blob/65eea34f76e34cb6f165196d3113dc26" alt="Aerial view of the main house, bungalow and green grounds" loading="lazy"></div>
+      <div style="padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#2F5D3F">For one group</p>
+        <h3 style="margin:0;font-size:28px;letter-spacing:-0.02em;font-weight:500">The whole property</h3>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#5C5C5C">Main house, bungalow and pool. Arranged directly with the family.</p>
+        <p style="margin:0;font-size:16px">Enquire for price</p>
+        <a class="pill" href="#contact" style="margin-top:6px;align-self:flex-start;background:#0E3221;color:#FFFFFF;padding:8px 8px 8px 20px;font-size:14px">Message us directly <span class="disc" style="width:28px;height:28px;background:#FFFFFF;color:#0E3221">→</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- GREEN -->
+<section id="green" style="background:#EEF2E9;padding:clamp(72px,10vw,150px) clamp(16px,5.5vw,80px);box-sizing:border-box">
+  <div style="max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(03) The garden</p>
+    <h2 class="reveal" style="margin:0 0 64px;font-size:clamp(38px,6vw,96px);line-height:.98;letter-spacing:-0.045em;font-weight:500;max-width:1100px">Green in every direction. <span style="color:#6E8E78">Banana trees, palms and frangipani around the house.</span></h2>
+    <div class="garden-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:20px">
+      <div class="zoom reveal" style="grid-column:span 7;aspect-ratio:16/11;border-radius:20px;min-width:0"><img src="/_blob/65eea34f76e34cb6f165196d3113dc26" alt="Aerial view of the villa among palm and banana trees" loading="lazy"></div>
+      <div style="grid-column:span 5;display:grid;gap:20px;min-width:0">
+        <div class="zoom reveal" style="aspect-ratio:16/9;border-radius:20px"><img src="/_blob/59d75361191fdb2e0d00e15f7eeb6bdd" alt="Garden lawn and trees" loading="lazy"></div>
+        <div class="zoom reveal" style="aspect-ratio:16/9;border-radius:20px"><img src="/_blob/4d648ff0041b7afc173e189f7b2cce1d" alt="Frangipani by the pool" loading="lazy"></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid #C9D5C2">
+      <div><div style="font-size:clamp(44px,5vw,72px);letter-spacing:-0.04em;font-weight:500;color:#0E3221">2</div><div style="margin-top:8px;font-size:15px;color:#4B5F52">Rooms, each with a private bathroom</div></div>
+      <div><div style="font-size:clamp(44px,5vw,72px);letter-spacing:-0.04em;font-weight:500;color:#0E3221">1</div><div style="margin-top:8px;font-size:15px;color:#4B5F52">Separate bungalow with its own kitchen</div></div>
+      <div><div style="font-size:clamp(44px,5vw,72px);letter-spacing:-0.04em;font-weight:500;color:#0E3221">1</div><div style="margin-top:8px;font-size:15px;color:#4B5F52">Garden pool, with direct access from the large room</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST -->
+<section id="honest" style="background:#0E3221;color:#FFFFFF;padding:clamp(72px,10vw,140px) clamp(16px,5.5vw,80px);box-sizing:border-box">
+  <div style="max-width:1280px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#A9C2B0">(04) Our promise</p>
+    <h2 class="reveal" style="margin:0 0 64px;font-size:clamp(36px,5.2vw,76px);line-height:1.02;letter-spacing:-0.04em;font-weight:500;max-width:1000px">Honest stays, five-star service. <span style="color:#A9C2B0">What you see here is where you will stay.</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:40px">
+      <div><div style="font-size:clamp(52px,6.5vw,96px);letter-spacing:-0.045em;font-weight:500">[5.0]</div><div style="margin-top:12px;font-size:15px;color:#C9D8CD">Rating on Airbnb</div></div>
+      <div><div style="font-size:clamp(52px,6.5vw,96px);letter-spacing:-0.045em;font-weight:500">[10/10]</div><div style="margin-top:12px;font-size:15px;color:#C9D8CD">Rating on Booking.com</div></div>
+      <div><div style="font-size:clamp(52px,6.5vw,96px);letter-spacing:-0.045em;font-weight:500">5★</div><div style="margin-top:12px;font-size:15px;color:#C9D8CD">Service, as guests describe it</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid #3F5D4B">
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#DCE6DF">Prices are clear. Anything extra, such as tours and day trips, is priced separately and told to you before you pay.</p>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#DCE6DF">The rooms, the pool and the bungalow in these photos are the ones you will stay in.</p>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#DCE6DF">Need something? Message the family directly and get an answer from a real person.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTY -->
+<section id="property" style="padding:clamp(72px,10vw,150px) clamp(16px,5.5vw,80px);max-width:1440px;margin:0 auto;box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px">
+    <div>
+      <p style="margin:0 0 18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(05) The property</p>
+      <h2 style="margin:0;font-size:clamp(40px,5.5vw,84px);line-height:.98;letter-spacing:-0.045em;font-weight:500">Pool, veranda <span style="color:#707070">and breakfast outside.</span></h2>
+    </div>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:#5C5C5C;max-width:420px">A main house, a separate bungalow and a garden with a pool, inside one walled property.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/5;border-radius:20px"><img src="/_blob/1008b8fd25839dce3ce28620793fd722" alt="Two loungers beside the swimming pool" loading="lazy"></div><figcaption style="margin-top:14px;font-size:18px;font-weight:600">The pool</figcaption></figure>
+    <figure class="reveal" style="margin:0;margin-top:48px"><div class="zoom" style="aspect-ratio:4/5;border-radius:20px"><img src="/_blob/3244de0414484a64518e9479995ef208" alt="Covered veranda with sofa and armchairs" loading="lazy"></div><figcaption style="margin-top:14px;font-size:18px;font-weight:600">The veranda</figcaption></figure>
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/5;border-radius:20px"><img src="/_blob/ffe50b581ef417491861f1743b3968d1" alt="Breakfast served on the terrace" loading="lazy"></div><figcaption style="margin-top:14px;font-size:18px;font-weight:600">Breakfast</figcaption></figure>
+    <figure class="reveal" style="margin:0;margin-top:48px"><div class="zoom" style="aspect-ratio:4/5;border-radius:20px"><img src="/_blob/bda28610c29bb0f90cc4d4a9632727d4" alt="Carved stone gate at the entrance" loading="lazy"></div><figcaption style="margin-top:14px;font-size:18px;font-weight:600">Arrival</figcaption></figure>
+  </div>
+</section>
+
+<!-- BATHROOMS -->
+<section style="background:#F4F4F2;padding:clamp(72px,10vw,140px) clamp(16px,5.5vw,80px);box-sizing:border-box">
+  <div style="max-width:1440px;margin:0 auto">
+    <figure class="reveal" style="margin:0 0 72px">
+      <div class="zoom" style="aspect-ratio:16/9;border-radius:20px"><img src="/_blob/b86edcf5a7bc359f1c95efcfd8b6f0a1" alt="A room with a patterned sofa, a double bed with orange cushions and a carved wooden door" loading="lazy"></div>
+      <figcaption style="margin-top:14px;font-size:15px;color:#5C5C5C">A room with a sofa, a double bed and a carved wooden door.</figcaption>
+    </figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:64px;align-items:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div class="zoom" style="aspect-ratio:3/4;border-radius:20px"><img src="/_blob/308a4e80d76b236ca1f3b4f25313fbc0" alt="Walk-in shower with grey tiles" loading="lazy"></div>
+      <div class="zoom" style="aspect-ratio:3/4;border-radius:20px;margin-top:40px"><img src="/_blob/0cd2474a399e40f8f75890aa4682607d" alt="Basin and mirror in the bathroom" loading="lazy"></div>
+    </div>
+    <div>
+      <p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(06) Rooms</p>
+      <h2 style="margin:0 0 28px;font-size:clamp(36px,4.6vw,64px);line-height:1.03;letter-spacing:-0.04em;font-weight:500">Private bathrooms, <span style="color:#707070">and a bed that is yours.</span></h2>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#5C5C5C;max-width:480px">Both rooms have a private bathroom. The large room opens straight onto the pool. The bungalow has its own kitchen and living room, so you can cook and sit without sharing.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOVINA -->
+<section id="lovina" style="padding:clamp(72px,10vw,150px) clamp(16px,5.5vw,80px);max-width:1440px;margin:0 auto;box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px">
+    <div>
+      <p style="margin:0 0 18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(07) Around Lovina</p>
+      <h2 style="margin:0;font-size:clamp(40px,5.5vw,84px);line-height:.98;letter-spacing:-0.045em;font-weight:500">Sea, springs <span style="color:#707070">and waterfalls.</span></h2>
+    </div>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:#5C5C5C;max-width:420px">A quiet city with friendly people. The market is close, the mountains are close, and the beach is close by.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:24px">
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/3;border-radius:20px"><img src="/_blob/5465f2a9c325541619e351d18f13021f" alt="Sunset over the sea" loading="lazy"></div><figcaption style="margin-top:14px;font-size:16px">Sunsets on the beach</figcaption></figure>
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/3;border-radius:20px"><img src="/_blob/4304caada9508edfa2f56a914ecfe1bd" alt="Sailing ship at dusk" loading="lazy"></div><figcaption style="margin-top:14px;font-size:16px">Sailing at dusk</figcaption></figure>
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/3;border-radius:20px"><img src="/_blob/07220a619936211e88f74a0e5ade43cf" alt="Hot spring pools beside a temple" loading="lazy"></div><figcaption style="margin-top:14px;font-size:16px">Hot springs</figcaption></figure>
+    <figure class="reveal" style="margin:0"><div class="zoom" style="aspect-ratio:4/3;border-radius:20px"><img src="/_blob/7d588a51982348f306ebf1420f0a66ee" alt="Waterfall in the forest" loading="lazy" style="object-position:57% 50%"></div><figcaption style="margin-top:14px;font-size:16px">Waterfalls in the hills</figcaption></figure>
+  </div>
+  <p style="margin:40px 0 0;font-size:15px;color:#707070">Tours and day trips are arranged and priced separately.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:0 clamp(16px,5.5vw,80px) clamp(72px,10vw,140px);max-width:1440px;margin:0 auto;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:64px;align-items:start">
+  <div>
+    <h2 style="margin:0 0 40px;font-size:clamp(36px,4vw,60px);letter-spacing:-0.04em;font-weight:500">Questions</h2>
+    <div style="border-top:1px solid #E4E4E2">
+      <details open style="border-bottom:1px solid #E4E4E2"><summary style="display:flex;gap:24px;padding:22px 0;align-items:center"><span style="font-size:14px;color:#707070;min-width:32px">01</span><span style="flex:1;font-size:18px">Is the pool private to the guests?</span><span class="plus" style="font-size:22px;color:#2F5D3F">+</span></summary><p style="margin:0 0 0 56px;padding:0 0 22px;font-size:16px;line-height:1.6;color:#5C5C5C">[Answer, confirmed by the family.]</p></details>
+      <details style="border-bottom:1px solid #E4E4E2"><summary style="display:flex;gap:24px;padding:22px 0;align-items:center"><span style="font-size:14px;color:#707070;min-width:32px">02</span><span style="flex:1;font-size:18px">Can we rent the whole property?</span><span class="plus" style="font-size:22px;color:#2F5D3F">+</span></summary><p style="margin:0 0 0 56px;padding:0 0 22px;font-size:16px;line-height:1.6;color:#5C5C5C">Yes, it is possible. Message the family directly to arrange it.</p></details>
+      <details style="border-bottom:1px solid #E4E4E2"><summary style="display:flex;gap:24px;padding:22px 0;align-items:center"><span style="font-size:14px;color:#707070;min-width:32px">03</span><span style="flex:1;font-size:18px">Are tours included in the price?</span><span class="plus" style="font-size:22px;color:#2F5D3F">+</span></summary><p style="margin:0 0 0 56px;padding:0 0 22px;font-size:16px;line-height:1.6;color:#5C5C5C">No. Tours and day trips are priced separately, and we tell you the price before you pay.</p></details>
+      <details style="border-bottom:1px solid #E4E4E2"><summary style="display:flex;gap:24px;padding:22px 0;align-items:center"><span style="font-size:14px;color:#707070;min-width:32px">04</span><span style="flex:1;font-size:18px">How far is the market?</span><span class="plus" style="font-size:22px;color:#2F5D3F">+</span></summary><p style="margin:0 0 0 56px;padding:0 0 22px;font-size:16px;line-height:1.6;color:#5C5C5C">[Distance and travel time, confirmed by the family.]</p></details>
+    </div>
+  </div>
+  <div class="zoom" style="aspect-ratio:4/5;border-radius:20px"><img src="/_blob/a0572e7de28b8c6f660f410531dfdea7" alt="Front door of the villa at night under a moonlit sky" loading="lazy"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#EEF2E9;padding:clamp(72px,10vw,140px) clamp(16px,5.5vw,80px);box-sizing:border-box">
+  <div style="max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#2F5D3F">(08) Book</p>
+    <h2 class="reveal" style="margin:0 0 48px;font-size:clamp(48px,9vw,132px);line-height:.95;letter-spacing:-0.055em;font-weight:500;color:#0E3221">Book online, <span style="color:#6E8E78">or message us directly.</span></h2>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a class="pill" href="#contact" style="background:#0E3221;color:#FFFFFF;padding:10px 10px 10px 26px;font-size:16px">Book on Airbnb <span class="disc" style="width:36px;height:36px;background:#FFFFFF;color:#0E3221">→</span></a>
+      <a class="pill" href="#contact" style="background:#0E3221;color:#FFFFFF;padding:10px 10px 10px 26px;font-size:16px">Book on Booking.com <span class="disc" style="width:36px;height:36px;background:#FFFFFF;color:#0E3221">→</span></a>
+      <a class="pill" href="#contact" style="border:1px solid #0E3221;color:#0E3221;padding:10px 10px 10px 26px;font-size:16px">Message the family <span class="disc" style="width:36px;height:36px;background:#0E3221;color:#FFFFFF">→</span></a>
+    </div>
+    <p style="margin:32px 0 0;font-size:16px;color:#4B5F52;max-width:640px">Renting the whole property, or a group stay? Message the family directly. [Contact address or WhatsApp number]</p>
+  </div>
+</section>
+
+<footer style="background:#0E2218;color:#FFFFFF;padding:72px clamp(16px,5.5vw,80px) 40px;box-sizing:border-box">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
+    <div>
+      <div style="font-size:20px;font-weight:600;letter-spacing:-0.02em">Annie’s Villa</div>
+      <p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#A9C2B0">Two rooms, a bungalow and a pool in a green garden in Lovina, north Bali.</p>
+    </div>
+    <div class="footlinks" style="display:flex;flex-direction:column;font-size:15px;color:#DCE6DF">
+      <a href="#stays">Stays</a><a href="#green">The garden</a><a href="#property">The property</a><a href="#lovina">Lovina</a><a href="#contact">Contact</a>
+    </div>
+    <div class="footlinks" style="display:flex;flex-direction:column;font-size:15px;color:#DCE6DF">
+      <a href="#contact">Instagram</a><a href="#contact">Airbnb</a><a href="#contact">Booking.com</a>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:56px auto 0;padding-top:24px;border-top:1px solid #3F5D4B;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:#A9C2B0">
+    <span>© [YEAR] Annie’s Villa. All rights reserved.</span>
+    <span>Lovina, Singaraja, North Bali</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
