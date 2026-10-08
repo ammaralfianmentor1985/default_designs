@@ -1,0 +1,4 @@
+date,villa_id,direction,category,description,counterparty,account,original_amount,original_currency,fx_rate_to_idr,amount_idr,source_doc,notes
+2026-01-05,V1,income,airbnb_payout,Example: Airbnb payout for booking HM12345,Airbnb,BCA_business,1500.00,USD,15800,23700000,airbnb_payout_2026-01.csv,Example row - delete
+2026-01-07,V1,expense,cleaning,Example: post-checkout cleaning,Cleaner name,cash_box,,IDR,1,350000,receipt_0107.jpg,Example row - delete
+2026-01-31,ALL,owner_draw,owner_draw,Example: fixed monthly owner draw,Owner,BCA_business,,IDR,1,5000000,bank_stmt_2026-01.pdf,Example row - delete
