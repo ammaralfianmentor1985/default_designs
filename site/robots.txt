@@ -1,0 +1,4 @@
+# STAGING: this site is not meant to be found yet. Every page also carries <meta name="robots" content="noindex">.
+# Note: crawlers only read robots.txt at the root of a host, so on the github.io project URL the noindex tags are what protect the pages.
+User-agent: *
+Disallow: /
