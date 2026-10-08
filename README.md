@@ -68,3 +68,8 @@ Claude Design doesn't read this repository. It uses design systems instead. Your
 ## This repository is public
 
 Anyone can see what is in it. Keep guest photos, phone numbers and private documents out of it.
+
+## Annie's Villa website and SEO
+
+- `site/` is the live Annie's Villa website (built from `site-src/`, published by GitHub Pages). It runs in staging mode, hidden from Google, until the domain is bought; `site-src/README.md` has the go-live steps.
+- `seo/` holds the SEO program: start with [`seo/SEO_PLAN.md`](seo/SEO_PLAN.md) and [`seo/owner-checklist.md`](seo/owner-checklist.md).
