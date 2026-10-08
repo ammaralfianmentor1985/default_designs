@@ -1,0 +1,25 @@
+# Runs on every pull request that touches the website. Fails when site/ is not what the generator produces,
+# or when an audit check fails (titles, canonicals, noindex, alt text, broken links, JSON-LD, no JavaScript...).
+# Once the site is live (staging: false in site-src/config.json) it also refuses to pass while a visible
+# [placeholder] is left on a page.
+name: Check site
+
+on:
+  pull_request:
+    paths:
+      - "site/**"
+      - "site-src/**"
+      - ".github/workflows/site-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node site-src/build.mjs --check
