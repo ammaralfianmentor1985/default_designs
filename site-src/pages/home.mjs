@@ -215,14 +215,20 @@ ${lov({ img: 'lovina-waterfall-forest', alt: 'Waterfall in the forest', cap: 'Wa
   // ---- Questions ----
   const q = (n, question, answerHtml, open) => `      <details${open ? ' open' : ''}><summary class="q"><span class="q__n">${n}</span><span class="q__t">${question}</span><span class="plus" aria-hidden="true">+</span></summary><p class="a">${answerHtml}</p></details>`;
   const faqMore = D('', `\n    <p class="note note--grey note--tight"><a class="link" href="${rel('/faq/')}">More questions and answers</a></p>`);
+  const poolA = cfg.faqAnswers.poolPrivate ?? (c.design ? c.placeholder('faq-pool-private', '[Answer, confirmed by the family.]', 'FAQ: is the pool private to the guests?') : null);
+  const marketA = cfg.faqAnswers.marketDistance ?? (c.design ? c.placeholder('faq-market-distance', '[Distance and travel time, confirmed by the family.]', 'FAQ: how far is the market?') : null);
+  // questions without a confirmed answer are left out of the live site, not guessed
+  const faqRows = [
+    poolA && ['Is the pool private to the guests?', poolA],
+    ['Can we rent the whole property?', 'Yes, it is possible. Message the family directly to arrange it.'],
+    ['Are tours included in the price?', 'No. Tours and day trips are priced separately, and we tell you the price before you pay.'],
+    marketA && ['How far is the market?', marketA],
+  ].filter(Boolean).map(([qq, a], i) => q(String(i + 1).padStart(2, '0'), qq, a, i === 0)).join('\n');
   const faq = `<section id="faq" class="sec sec--md sec--page sec--tail faq">
   <div>
     <h2 class="h2 h2--60">Questions</h2>
     <div class="faq__list">
-${q('01', 'Is the pool private to the guests?', c.placeholder('faq-pool-private', '[Answer, confirmed by the family.]', 'FAQ: is the pool private to the guests?'), true)}
-${q('02', 'Can we rent the whole property?', 'Yes, it is possible. Message the family directly to arrange it.')}
-${q('03', 'Are tours included in the price?', 'No. Tours and day trips are priced separately, and we tell you the price before you pay.')}
-${q('04', 'How far is the market?', c.placeholder('faq-market-distance', '[Distance and travel time, confirmed by the family.]', 'FAQ: how far is the market?'))}
+${faqRows}
     </div>${faqMore}
   </div>
   <div class="zoom rounded ar-4-5">${pic('annies-villa-lovina-front-door-night', { alt: 'Front door of the villa at night under a moonlit sky', sizes: '(min-width:700px) 42vw, 100vw' })}</div>
