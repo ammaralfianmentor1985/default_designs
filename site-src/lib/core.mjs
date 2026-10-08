@@ -54,6 +54,7 @@ export function createCtx({ config, manifest, page, design = false, fills }) {
   /** "From IDR 450,000 per night" or the design's "From [price] per night" while the price is unknown. */
   ctx.priceLine = (key) => {
     const price = config.prices[key];
+    if (price === 'enquire' && !design) return 'Enquire for price'; // same wording the design uses for the whole property
     if (price == null) return 'From ' + ctx.placeholder('price-' + key, '[price]', 'Nightly price for ' + key) + ' per night';
     return 'From ' + formatIdr(price) + ' per night';
   };
