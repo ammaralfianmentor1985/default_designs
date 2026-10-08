@@ -14,7 +14,7 @@ Audited: 2025-10-08 · Verdict: **design & copy are strong; the file is not laun
 | 6 | Structured data (JSON-LD) | ❌ None | `LodgingBusiness` on home (name, address, geo, telephone, priceRange, amenityFeature, image, sameAs → Airbnb listing); one `VacationRental`/`Accommodation` per unit page; `FAQPage` on the FAQ (questions already in the design: "Is the pool private to the guests?", "Can we rent the whole property?", "Are tours included in the price?", "How far is the market?") |
 | 7 | Image `alt` text | ❌ None on ~23 images | Descriptive, location-bearing alt: `Private pool with sun loungers at Annie's Villa Lovina` |
 | 8 | **"Laviana Bungalow" absent** | ❌ The page never mentions Laviana Bungalow — one of our two branded search terms has **no landing target** | Add a Laviana Bungalow unit page (and name the units in the "Choose your stay" section); link both unit pages from home |
-| 9 | WhatsApp booking link | ❌ Placeholder "[WhatsApp number]" | Owner supplies the real number → `https://wa.me/62XXXXXXXXXX?text=...` prefilled booking message |
+| 9 | WhatsApp booking link | ❌ Placeholder "[WhatsApp number]" | Number confirmed: **+62 812-388-3439** → `https://wa.me/628123883439?text=...` prefilled booking message |
 | 10 | Headings/keywords | ⚠️ Beautiful brand-voice headings ("A quiet green villa", "Sea, springs") with no location terms | **Do not butcher the copy.** Keywords go in title/meta/schema/alt and the location section body text; headings stay as designed |
 | 11 | Canonical / robots / sitemap / 404 / favicon | ❌ None | Add all; `sitemap.xml` listing every page, `robots.txt` allowing all + sitemap pointer |
 | 12 | Heading hierarchy | ✅ One `<h1>`, sectioned `<h2>`s — good | Keep |

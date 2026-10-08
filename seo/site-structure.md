@@ -9,6 +9,7 @@ Static HTML site, deployed from this repo via GitHub Pages, custom domain (see `
 /annies-villa/         Unit page — Annie's Villa rooms
 /laviana-bungalow/     Unit page — Laviana Bungalow (NEW — not in current design)
 /location/             Location & things to do (hub that guides hang off)
+/long-term/            Monthly & long-stay rentals (whole property, 6 months–3 years)
 /faq/                  FAQ (expanded from the design's Questions section)
 /guides/<slug>/        Content engine articles (Phase 3)
 /404.html              Not-found
@@ -24,6 +25,7 @@ The home page keeps the designed one-page flow (hero → choose your stay → fa
 | `/annies-villa/` | Annie's Villa — Garden Rooms with Pool, Lovina | Rooms, amenities, photos, price range, book direct | Annie's Villa | `Accommodation`/`VacationRental` |
 | `/laviana-bungalow/` | Laviana Bungalow — Private Bungalow in Lovina, Bali | Whole-place bungalow, kitchen, shared 16 m pool; Superhost-hosted | Laviana Bungalow | `Accommodation`/`VacationRental` |
 | `/location/` | Lovina, North Bali — Around Annie's Villa | Dolphins at dawn, Banjar hot springs, waterfalls, Lovina Beach — all from a quiet garden base | Keep voice: "Sea, springs…" | `Place` optional |
+| `/long-term/` | Long-Term Villa Rental in Lovina — Monthly & Yearly Stays | Rent the whole property — rooms, bungalow, 16 m pool — for 6 months to 3 years. Quiet garden base in Lovina; inquire on WhatsApp | Stay longer in Lovina | `Accommodation` (leaseLength note in text) |
 | `/faq/` | Annie's Villa Lovina — Questions & Answers | Pool privacy, whole-property rental, tours, airport pickup, visa extension | Questions | `FAQPage` |
 | `/guides/*` | per `content-calendar.md` | per article | per article | `Article` |
 
@@ -45,8 +47,8 @@ The home page keeps the designed one-page flow (hero → choose your stay → fa
     "addressCountry": "ID"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": "FILL", "longitude": "FILL" },
-  "telephone": "+62-FILL (WhatsApp)",
-  "priceRange": "FILL (e.g. $–$$)",
+  "telephone": "+62-812-388-3439",
+  "priceRange": "FILL (owner confirms nightly prices at build time)",
   "image": ["https://DOMAIN/images/annies-villa-lovina-pool.jpg"],
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Outdoor swimming pool (16 m)" },
@@ -55,12 +57,20 @@ The home page keeps the designed one-page flow (hero → choose your stay → fa
     { "@type": "LocationFeatureSpecification", "name": "Free parking" },
     { "@type": "LocationFeatureSpecification", "name": "Airport pickup (paid)" }
   ],
-  "sameAs": ["https://www.airbnb.com/rooms/31995942", "FILL other listings/socials"],
+  "sameAs": [
+    "https://www.airbnb.com/rooms/31995942",
+    "https://www.airbnb.com/users/profile/1463271766396267063",
+    "https://www.instagram.com/laviana_bungalow"
+  ],
   "url": "https://DOMAIN/"
 }
 ```
 
-`FILL` values come from `owner-checklist.md` answers. Validate with Google's Rich Results Test before deploy.
+`alternateName` should also include "Annie Villa" (Airbnb's spelling). Coordinates: resolve https://maps.app.goo.gl/fYGfdKSeuuMvpfvB6. Remaining `FILL` values per `owner-checklist.md` section A. Validate with Google's Rich Results Test before go-live. Do **not** add `aggregateRating` from Airbnb reviews (off-platform ratings violate Google's guidelines) — show "165 reviews · 5.0★ on Airbnb" as visible text instead.
+
+## Staging vs go-live (domain deferred by owner)
+
+Until the domain is bought: every page carries `<meta name="robots" content="noindex">` and `robots.txt` disallows all — the staging `github.io` URL must not get indexed (it would later compete with the real domain). The go-live PR: remove noindex, open robots, add `CNAME`, switch the URL base, submit sitemap in Search Console.
 
 ## Image conventions
 
@@ -71,7 +81,7 @@ The home page keeps the designed one-page flow (hero → choose your stay → fa
 
 ## Internal linking rules
 
-- Header/footer nav: Home · Annie's Villa · Laviana Bungalow · Location · FAQ · Book (WhatsApp).
+- Header/footer nav: Home · Annie's Villa · Laviana Bungalow · Location · Long stays · FAQ · Book (WhatsApp).
 - Every guide → links to `/location/` + one unit page in body text.
 - Home "Choose your stay" cards → the two unit pages (and name the units on the cards).
 

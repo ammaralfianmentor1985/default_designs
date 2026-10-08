@@ -28,6 +28,9 @@ Notes: "laviana" alone is contested by **The Laviana Hotel** (different business
 | accommodation near lovina beach | Booking | Home (location section) |
 | villa near banjar hot springs | Booking | Guide: Banjar Hot Springs |
 | places to stay north bali | Research | Guide: North Bali itinerary |
+| long term rental lovina | Long-stay booking (high value, near-zero competition) | `/long-term/` |
+| monthly villa rental bali north / lovina | Long-stay booking | `/long-term/` |
+| house for rent lovina yearly | Long-stay booking | `/long-term/` |
 
 ## Tier 3 — Things-to-do long-tail (content engine; months 2–6)
 
