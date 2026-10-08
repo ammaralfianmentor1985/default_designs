@@ -1,0 +1,88 @@
+{
+  "_about": "Single source of facts and deployment switches for the website. A value of null means 'not confirmed by the owner yet': the build leaves it out of the structured data, shows the design's [placeholder] where the design had one, and lists it in the FILL report. Go-live = change baseUrl, set staging to false, set customDomain, run `node site-src/build.mjs`.",
+  "baseUrl": "https://ammaralfianmentor1985.github.io/default_designs",
+  "staging": true,
+  "customDomain": null,
+  "copyrightYear": 2026,
+  "brand": {
+    "name": "Annie’s Villa",
+    "schemaName": "Annie's Villa Lovina",
+    "alternateNames": [
+      "Annie Villa",
+      "Laviana Bungalow at Annie's Villa"
+    ]
+  },
+  "contact": {
+    "whatsappNumber": "628123883439",
+    "phoneDisplay": "+62 812-388-3439",
+    "phoneSchema": "+62-812-388-3439"
+  },
+  "whatsappMessages": {
+    "general": "Hello Annie’s Villa, I would like to check availability.",
+    "largeRoom": "Hello Annie’s Villa, I would like to book the Large room (7 × 8 m).\nDates:\nGuests:",
+    "smallRoom": "Hello Annie’s Villa, I would like to book the Small room (5 × 6 m).\nDates:\nGuests:",
+    "bungalow": "Hello Annie’s Villa, I would like to book Laviana Bungalow.\nDates:\nGuests:",
+    "wholeProperty": "Hello Annie’s Villa, I would like to ask about renting the whole property.\nDates:\nGuests:",
+    "longStay": "Hello Annie’s Villa, I would like to ask about a long stay (6 months or more) in the whole property.\nStart date:\nHow long:\nGuests:"
+  },
+  "address": {
+    "street": "Jalan Laviana No. 8, Banyualit, Kalibukbuk",
+    "locality": "Lovina, Singaraja",
+    "region": "Bali",
+    "postalCode": "81152",
+    "postalCodeConfirmed": false,
+    "country": "ID",
+    "oneLine": "Jalan Laviana No. 8, Banyualit, Kalibukbuk, Lovina, Singaraja, Bali"
+  },
+  "geo": {
+    "latitude": null,
+    "longitude": null
+  },
+  "links": {
+    "airbnbHost": "https://www.airbnb.com/users/profile/1463271766396267063",
+    "airbnbBungalow": "https://www.airbnb.com/rooms/31995942",
+    "airbnbVilla": null,
+    "bookingCom": null,
+    "instagram": "https://www.instagram.com/laviana_bungalow",
+    "googleMaps": "https://maps.app.goo.gl/fYGfdKSeuuMvpfvB6"
+  },
+  "toggles": {
+    "showBookingCom": false
+  },
+  "prices": {
+    "_about": "Nightly price in IDR, shown as 'From IDR 450,000 per night'. 'enquire' shows 'Enquire for price'. null = still to confirm (shows the design's [price] placeholder).",
+    "largeRoom": "enquire",
+    "smallRoom": "enquire",
+    "bungalow": "enquire"
+  },
+  "reviews": {
+    "airbnbRating": "5.0",
+    "airbnbCount": 165,
+    "villaCount": 93,
+    "bungalowCount": 72,
+    "bookingComRating": null
+  },
+  "host": {
+    "name": "Juliani",
+    "nickname": "Ani",
+    "airbnbYears": 8,
+    "languages": [
+      "English",
+      "Indonesian",
+      "Malay"
+    ]
+  },
+  "stay": {
+    "checkIn": "14:00",
+    "checkOut": "12:00",
+    "airportPickupIdr": 600000,
+    "longStayMinMonths": 6,
+    "longStayMaxYears": 3,
+    "poolLengthM": 16
+  },
+  "faqAnswers": {
+    "_about": "Answers for FAQ questions that need the family. null = the question is left out of the live site.",
+    "poolPrivate": null,
+    "marketDistance": null
+  }
+}

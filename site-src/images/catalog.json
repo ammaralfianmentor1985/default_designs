@@ -1,0 +1,37 @@
+{
+  "_about": "Image catalogue for the website. 'src' is relative to the repository root. Originals at the repo root are never modified; the five 'masters' are the retouched/upscaled versions that exist only in the approved design. Run: python3 site-src/images/build_images.py",
+  "limits": { "default_kb": 250, "hero_kb": 400 },
+  "images": [
+    { "id": "annies-villa-lovina-pool-dusk", "src": "site-src/images/masters/pool-dusk.jpg", "hero": true, "alt": "Pool at dusk at Annie’s Villa, with the lit pavilion behind it" },
+    { "id": "annies-villa-lovina-aerial-grounds", "src": "site-src/images/masters/aerial-grounds.jpg", "hero": true, "alt": "Aerial view of the villa surrounded by palms and banana trees" },
+    { "id": "annies-villa-lovina-room-sofa-bed", "src": "site-src/images/masters/room-sofa-bed.jpg", "hero": true, "alt": "A room with a sofa, a double bed and a carved wooden door" },
+    { "id": "annies-villa-lovina-large-room", "src": "site-src/images/masters/large-room.jpg", "alt": "Large bedroom with a double bed and wardrobe" },
+    { "id": "annies-villa-lovina-small-room", "src": "site-src/images/masters/small-room.jpg", "alt": "Double bed with orange cushions and towels" },
+
+    { "id": "annies-villa-lovina-garden-lawn", "src": "ad832c0e-fd6d-40d7-ab56-fe4861374c9b.jpg", "hero": true, "alt": "Green garden lawn beside the villa" },
+    { "id": "annies-villa-lovina-veranda", "src": "6aab3a1e-42c8-441a-8b84-83d5f064f34b.jpg", "alt": "Covered veranda with sofa and armchairs" },
+    { "id": "annies-villa-lovina-pool-frangipani", "src": "26828d3b-29be-45f9-892f-c1ef824c481f.jpg", "alt": "Frangipani by the pool" },
+    { "id": "annies-villa-lovina-pool-loungers", "src": "17149bc5-4b4d-42e1-8f60-49bab8c0f0aa.jpg", "alt": "Two loungers beside the swimming pool" },
+    { "id": "annies-villa-lovina-breakfast-terrace", "src": "ab62d615-36a7-4c4e-91a7-dafa8f0ef7c6.jpg", "alt": "Breakfast served on the terrace" },
+    { "id": "annies-villa-lovina-entrance-gate", "src": "1c7622b3-808d-4883-ac2e-0c9969a39ffb.jpg", "alt": "Carved stone gate at the entrance" },
+    { "id": "annies-villa-lovina-bathroom-shower", "src": "04cd298e-1776-4d32-8345-78c3f768f2fe.jpg", "alt": "Walk-in shower with grey tiles" },
+    { "id": "annies-villa-lovina-bathroom-basin", "src": "33c1a0e7-290c-4cf0-8f45-21d13b8af1c6.jpg", "alt": "Basin and mirror in the bathroom" },
+    { "id": "annies-villa-lovina-front-door-night", "src": "42f4403e-638d-4828-83b7-5d55d1854a44.jpeg", "alt": "Front door of the villa at night under a moonlit sky" },
+
+    { "id": "annies-villa-lovina-house-front-porch", "src": "198e8794-8c41-406a-8495-325cb2f9f142.jpg", "alt": "Front porch of the main house with a carved wooden door, tiered red umbrellas and chairs with orange cushions" },
+    { "id": "annies-villa-lovina-room-sitting-area", "src": "80cbb56c-0b2c-452a-8401-68ddc2acf673.jpeg", "alt": "Room with mint-green walls, a double bed, a sofa and carved wooden doors" },
+    { "id": "annies-villa-lovina-pool-from-above", "src": "64bc8e43-feb9-4870-81fe-84bcb821c8b8.jpg", "alt": "The curved garden pool with a small round pool beside it, seen from above" },
+    { "id": "annies-villa-lovina-breakfast-spread", "src": "c2482ae2-a05a-4f81-b3d8-f6d3cb4cb7c4.jpg", "alt": "Breakfast on a wooden table by the pool: toast, banana and almond porridge, jam and a coffee press" },
+
+    { "id": "lovina-beach-sunset", "src": "abcd24db-fe53-4784-9a38-c2749986a576.jpg", "hero": true, "alt": "Sunset over the sea" },
+    { "id": "lovina-sailing-ship-dusk", "src": "41c90c9d-6c60-4a3d-852f-20601d58a7bf.jpg", "alt": "Sailing ship at dusk" },
+    { "id": "lovina-hot-spring-pools", "src": "c8c0b665-1392-4cb4-85be-fa7bb7d15312.jpg", "alt": "Hot spring pools beside a temple" },
+    { "id": "lovina-waterfall-forest", "src": "25c27dd9-f015-47a2-87ac-0871ddc95526.jpg", "alt": "Waterfall in the forest" },
+    { "id": "lovina-dolphins-at-sea", "src": "947b8927-1ddd-465f-b627-a2d829e74806.jpg", "alt": "Dolphins surfacing at sea near an outrigger boat" },
+    { "id": "lovina-holy-hot-spring", "src": "a3a1b721-c629-49a2-9ca9-8f64732d43e5.jpg", "alt": "The Holy Hot Spring pool, with a pavilion and gardens above it" },
+    { "id": "lovina-waterfall-gorge", "src": "f49dc9c2-4094-4784-8f95-9ef2c90b4c39.jpg", "alt": "Waterfall falling into a green forest gorge" },
+    { "id": "lovina-boats-beach-sunset", "src": "f4d4db98-b981-4c6d-85b5-eaa39cb352e7.jpg", "alt": "Outrigger boats on a dark-sand beach at sunset, with mountains across the water" },
+
+    { "id": "og-annies-villa-lovina", "src": "site-src/images/masters/pool-dusk.jpg", "crop": [0, 133, 1200, 763], "jpeg_only": true, "single": true, "alt": "Pool at dusk at Annie’s Villa in Lovina, with the lit pavilion behind it" }
+  ]
+}
